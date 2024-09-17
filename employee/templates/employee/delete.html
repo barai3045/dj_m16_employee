@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Employee{% endblock %}
+
+{% block content %}
+<div class="flex justify-center">
+    <div class="w-3/4">
+        <h1>Delete Employee</h1>
+        <p>Are you sure you want to delete <strong>{{ employee.name }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="bg-gray-600 hover:bg-red-500 rounded px-3 text-white">Confirm Delete</button>
+        </form>
+        <a href="{% url 'home' %}" class="bg-gray-600 hover:bg-blue-500 rounded px-3 text-white"> Cancel </a>
+
+    </div>
+</div>
+{% endblock %}

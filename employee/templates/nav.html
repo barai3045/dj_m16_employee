@@ -1,12 +1,44 @@
-<nav class="flex">
-    <ul class="flex gap-1">
-        <li class="min-w-20 bg-gray-300 hover:bg-blue-200  px-3 rounded border">1</li>
-        <li class="min-w-20 bg-gray-300 hover:bg-blue-200  px-3 rounded border">1</li>
-        <li class="min-w-20 bg-gray-300 hover:bg-blue-200  px-3 rounded border">1</li>
-        <li class="min-w-20 bg-gray-300 hover:bg-blue-200  px-3 rounded border">1</li>
+<div class="flex justify-center bg-gray-300">
 
 
-   
+    {% if user.is_superuser %}
+
+    <nav class="flex w-3/4  py-2 justify-between">
         
-    </ul>
+        <div class="flex gap-1">
+            <a href="{% url 'home' %}"
+                class="font-medium hover:border hover:bg-gray-600 hover:text-white px-2 rounded">Home </a>
+            <a href="{% url 'add_employee' %}"
+                class="font-medium hover:border hover:bg-gray-600 hover:text-white px-2 rounded">Add Employee </a>
+                <a href="{% url 'change_password' %}" class="font-medium hover:border hover:bg-gray-600 hover:text-white px-2 rounded">Change Password</a>
+        </div>
+        <div class="flex gap-1">
+            <div><strong>Welcome: {{ request.user.first_name }} {{ request.user.last_name }} ({{ request.user.username }})</strong></div>
+            <a href="{% url 'logout_view' %}"
+                class="font-medium hover:border hover:bg-gray-600 hover:text-white px-2 rounded">Logout</a>
+        </div>
+    
+
+    </nav>
+
+
+    {% else %}
+
+
+
+    <nav class="flex w-3/4 gap-1 py-2 justify-between">
+    <div class="flex gap-1">
+       <a href="{% url 'home' %}" class="font-medium hover:border hover:bg-gray-600 hover:text-white px-2 rounded">Home</a></li>
+        <a href="{% url 'change_password' %}" class="font-medium hover:border hover:bg-gray-600 hover:text-white px-2 rounded">Change Password</a>
+    </div>
+    
+    <div class="flex gap-1">
+        <div class="font-medium">Welcome: {{ employee.name }} ({{ request.user.username }})</div>
+        <a href="{% url 'logout_view' %}" class="font-medium hover:border hover:bg-gray-600 hover:text-white px-2 rounded">Logout</a>
+    </div>
+
 </nav>
+
+
+    {% endif %}
+</div>

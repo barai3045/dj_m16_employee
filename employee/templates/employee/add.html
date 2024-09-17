@@ -1,0 +1,28 @@
+{% extends "base.html" %}  
+
+{% block content %}
+<div class="flex justify-center">
+    <div class="w-3/4">
+<h1>Add Employee</h1>
+
+        <!-- Display any messages -->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="bg-gray-600 hover:bg-blue-500 rounded px-3 text-white">Add Employee</button>
+    </form>
+    
+
+</div>
+</div>
+{% endblock %}
